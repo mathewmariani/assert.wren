@@ -4,7 +4,7 @@ A collection of assertion functions for wren.
 
 ## Installation
 
-The [assert.wren](assert.lua?raw=1) file should be dropped into an existing project
+The [assert.wren](assert.wren?raw=1) file should be dropped into an existing project
 and imported
 
 ```wren
