@@ -14,7 +14,7 @@ class assert {
 	 */
 	static equal(actual, expected) {
 		if (actual == expected) return
-		Fiber.abort("Failed to assert that %(actual) == %(expected)")
+		Fiber.abort("expected %(actual) to equal %(expected)")
 	}
 
 	/**
@@ -24,7 +24,7 @@ class assert {
 	 */
 	static notEqual(actual, expected) {
 		if (actual != expected) return
-		Fiber.abort("Failed to assert that %(actual) != %(expected)")
+		Fiber.abort("expected %(actual) to not equal %(expected)")
 	}
 
 	/**
@@ -314,7 +314,21 @@ class assert {
 
 		if (!value.isInfinity) return
 
-		Fiber.abort("Failed to assert that %(value) is Finite")
+		Fiber.abort("Failed to assert that %(value) is finite")
+	}
+
+	/**
+	 * Asserts `value` is not a finite number.
+	 * @param  { Num }  value
+	 */
+	static isNotFinite(value) {
+		if (value.type != Num) {
+			Fiber.abort("The arguments to 'isNotFinite' must be of type Num")
+		}
+
+		if (value.isInfinity) return
+
+		Fiber.abort("Failed to assert that %(value) is not finite")
 	}
 
 	/**
