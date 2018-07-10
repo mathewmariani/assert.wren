@@ -264,7 +264,24 @@ class assert {
 
 		if (Object.same(obj1, obj2)) return
 
-		Fiber.abort("Failed to assert that %(obj1) is that same as %(obj2)")
+		Fiber.abort("Failed to assert that %(obj1) is the same as %(obj2)")
+	}
+
+	/**
+	 * Asserts that `obj1` and `obj2` are not the same.
+	 * Numbers, Strings, Booleans, and Ranges compare by value.
+	 * For all other objects, this returns true only if `obj1` and `obj2` refer to the exact same object in memory.
+	 * @param  { Mixed }  obj1
+	 * @param  { Mixed }  obj2
+	 */
+	static isNotSame(obj1, obj2) {
+		if (obj1.type != Object && obj2.type != Object) {
+			Fiber.abort("The arguments to 'isSame' must be of type Object")
+		}
+
+		if (!Object.same(obj1, obj2)) return
+
+		Fiber.abort("Failed to assert that %(obj1) is not the same as %(obj2)")
 	}
 
 	/**
